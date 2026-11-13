@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bassel Taleb · Software developer</title>
+<meta name="description" content="Bassel Taleb: CS senior at Wayne State and Apple Developer Academy graduate. iOS apps, systems programming in C, and games.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F2F4F1;
+    --ink: #1C2321;
+    --muted: #56625E;
+    --rule: #C9CFCB;
+    --steel: #2F5DA8;
+    --brass: #C98B2B;
+    --measure: 68ch;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Schibsted Grotesk", system-ui, sans-serif;
+    font-size: 1.0625rem;
+    line-height: 1.55;
+  }
+  a { color: var(--steel); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  a:hover { text-decoration-thickness: 2px; }
+  a:focus-visible, canvas:focus-visible { outline: 3px solid var(--brass); outline-offset: 3px; border-radius: 2px; }
+
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 3rem); }
+
+  header.top {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding-block: 1.5rem;
+    font-weight: 500;
+  }
+  header.top nav a { margin-left: 1.5rem; color: var(--ink); text-decoration: none; }
+  header.top nav a:hover { color: var(--steel); }
+
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: center;
+    padding-block: clamp(2rem, 7vw, 5.5rem) clamp(3rem, 8vw, 6rem);
+  }
+  .hero h1 {
+    font-size: clamp(2.6rem, 6.4vw, 5rem);
+    line-height: 1.02;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin: 0 0 1.5rem;
+  }
+  .hero p { max-width: 46ch; margin: 0 0 1rem; font-size: 1.1875rem; color: var(--muted); }
+  .hero .links { margin-top: 2rem; display: flex; gap: 1.5rem; flex-wrap: wrap; font-weight: 500; }
+
+  .lab { position: relative; }
+  .lab canvas {
+    display: block; width: 100%; height: auto; aspect-ratio: 480 / 500;
+    touch-action: none; cursor: grab;
+  }
+  .lab canvas:active { cursor: grabbing; }
+  .lab figcaption { font-size: 0.875rem; color: var(--muted); margin-top: 0.5rem; }
+  .readout { font-variant-numeric: tabular-nums; }
+
+  section { padding-block: clamp(3rem, 7vw, 5rem); border-top: 1px solid var(--rule); }
+  section > h2 {
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-weight: 800; letter-spacing: -0.02em;
+    margin: 0 0 0.5rem;
+  }
+  section > .intro { color: var(--muted); max-width: var(--measure); margin: 0 0 2.5rem; }
+
+  .group { display: grid; grid-template-columns: 13rem minmax(0, 1fr); gap: 2rem; margin-bottom: 3rem; }
+  .group:last-child { margin-bottom: 0; }
+  .group h3 { font-size: 1.0625rem; font-weight: 700; margin: 0.25rem 0 0; color: var(--muted); }
+  .project { padding-bottom: 1.75rem; margin-bottom: 1.75rem; border-bottom: 1px solid var(--rule); }
+  .project:last-child { border-bottom: 0; margin-bottom: 0; padding-bottom: 0; }
+  .project h4 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.01em; margin: 0 0 0.35rem; }
+  .project p { margin: 0 0 0.6rem; max-width: var(--measure); }
+  .project .role { color: var(--muted); font-style: italic; }
+  .stack { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.75rem 0; padding: 0; list-style: none; }
+  .stack li { font-size: 0.8125rem; font-weight: 500; padding: 0.15rem 0.6rem; border: 1px solid var(--rule); border-radius: 999px; }
+  .project .go { display: flex; gap: 1.25rem; flex-wrap: wrap; font-weight: 500; font-size: 0.9375rem; }
+
+  .about { display: grid; grid-template-columns: 13rem minmax(0, 1fr); gap: 2rem; }
+  .about p { max-width: var(--measure); margin: 0 0 1rem; }
+  .facts { list-style: none; padding: 0; margin: 1.5rem 0 0; display: grid; gap: 0.35rem; max-width: var(--measure); }
+  .facts strong { font-weight: 700; }
+
+  footer { border-top: 1px solid var(--rule); padding-block: 2.5rem 3rem; color: var(--muted); }
+  footer h2 { color: var(--ink); font-size: clamp(1.75rem, 3vw, 2.25rem); font-weight: 800; letter-spacing: -0.02em; margin: 0 0 0.75rem; }
+  footer .links { display: flex; gap: 1.5rem; flex-wrap: wrap; font-weight: 500; font-size: 1.125rem; }
+
+  @media (max-width: 820px) {
+    .hero { grid-template-columns: 1fr; }
+    .lab { max-width: 340px; }
+    .group, .about { grid-template-columns: 1fr; gap: 1rem; }
+    header.top nav a { margin-left: 1rem; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <span>Bassel Taleb</span>
+    <nav aria-label="Sections"><a href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div>
+        <h1>I build things to understand them.</h1>
+        <p>I'm a computer science senior at Wayne State University and a graduate of the Apple Developer Academy. I write iOS apps, low-level C, and games, usually starting from first principles.</p>
+        <p>The spring on this page runs on the same physics as my C simulation. Pull the weight down and let go.</p>
+        <div class="links">
+          <a href="#work">See my projects</a>
+          <a href="https://github.com/Bttaleb">GitHub</a>
+          <a href="https://linkedin.com/in/bassel-taleb">LinkedIn</a>
+        </div>
+      </div>
+      <figure class="lab" style="margin:0">
+        <canvas id="spring" width="480" height="500" tabindex="0"
+          aria-label="Interactive spring and weight. Drag the weight, or focus and press the down arrow to pull it, then release."></canvas>
+        <figcaption>Hooke's law with damping, semi-implicit Euler at 1/60 s.<br><span class="readout" id="readout"></span></figcaption>
+      </figure>
+    </div>
+
+    <section id="work">
+      <h2>Projects</h2>
+      <p class="intro">A mix of team projects with real clients and solo builds where I wanted to understand how something works underneath.</p>
+
+      <div class="group">
+        <h3>Apps</h3>
+        <div>
+          <article class="project">
+            <h4>CampusRental</h4>
+            <p>An iOS app for students to book campus study rooms, reserve equipment, and find tutors, with sign-in, live availability, and a "My rentals" view.</p>
+            <p class="role">Team of five. I was Scrum Master and a full-stack developer.</p>
+            <ul class="stack"><li>Swift</li><li>SwiftUI</li><li>Supabase</li><li>MVVM</li><li>Protocol-based services with mocks</li></ul>
+            <div class="go">
+              <a href="https://github.com/Bttaleb/CampusRental">Code</a>
+              <a href="https://bttaleb.github.io/CBS-Phase-II/">Design and requirements docs</a>
+            </div>
+          </article>
+          <article class="project">
+            <h4>MAGGIE</h4>
+            <p>Medical Adherence Game Platform: a mobile app that turns a patient's health-record data into personalized quiz games, plus a dashboard for their physician. Built in sprints with a physician client.</p>
+            <p class="role">Capstone project. I'm the Lead and Integration Developer.</p>
+            <ul class="stack"><li>TypeScript</li><li>React Native</li><li>Expo</li><li>Supabase</li></ul>
+            <div class="go"><a href="https://github.com/summer-higgins/test_maggie">Code</a></div>
+          </article>
+        </div>
+      </div>
+
+      <div class="group">
+        <h3>Systems in C</h3>
+        <div>
+          <article class="project">
+            <h4>conduit-ipc</h4>
+            <p>A small message protocol for processes talking over pipes and sockets. Each frame carries a length and a type, and the I/O layer handles partial reads, partial writes, and interrupted system calls so a message always arrives whole or fails cleanly.</p>
+            <ul class="stack"><li>C11</li><li>POSIX</li><li>fork-based tests</li><li>AddressSanitizer</li></ul>
+            <div class="go"><a href="https://github.com/Bttaleb/conduit-ipc">Code</a></div>
+          </article>
+          <article class="project">
+            <h4>PhysicsSim: Spring and Ball</h4>
+            <p>A real-time simulation of weights on springs, each with a different mass, showing live velocity and spring tension. Uses real units and a fixed time step, so it behaves the same on every machine.</p>
+            <ul class="stack"><li>C</li><li>raylib</li><li>Numerical integration</li></ul>
+            <div class="go"><a href="https://github.com/Bttaleb/PhysicsSim---Spring-and-Ball">Code</a></div>
+          </article>
+        </div>
+      </div>
+
+      <div class="group">
+        <h3>Games</h3>
+        <div>
+          <article class="project">
+            <h4>ChessCards</h4>
+            <p>A two-player card battler where your deck is a chess army: pawns, knights, bishops, rooks, a queen, and a king, each with its own attack, defense, and abilities. I built the first version in SpriteKit at the Apple Developer Academy, then rebuilt it in Godot and wrote down what the rebuild taught me about separating game data from what's on screen.</p>
+            <ul class="stack"><li>Godot</li><li>GDScript</li><li>Swift</li><li>SpriteKit</li></ul>
+            <div class="go">
+              <a href="https://github.com/Bttaleb/chessCards2.0">Godot version</a>
+              <a href="https://github.com/Bttaleb/Chall4Game">SpriteKit version</a>
+            </div>
+          </article>
+          <article class="project">
+            <h4>Sliding puzzle</h4>
+            <p>The classic 15-tile puzzle with a shuffle, a move counter, and a timer. Plays in the browser.</p>
+            <ul class="stack"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+            <div class="go">
+              <a href="https://bttaleb.github.io/puzzle-game/">Play it</a>
+              <a href="https://github.com/Bttaleb/puzzle-game">Code</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="about">
+        <h2 style="margin:0">About</h2>
+        <div>
+          <p>Before computer science I spent four years managing a restaurant and a staff of more than ten people. That job taught me to plan under pressure, keep a team moving, and notice when a process is costing people time. I bring the same habits to software: break the problem down, find the pattern, and write code I can explain line by line.</p>
+          <p>I keep my study notes on algorithms, operating systems, and theory of computation in a public <a href="https://github.com/Bttaleb/LearningNotes">notes repository</a>.</p>
+          <ul class="facts">
+            <li><strong>Education:</strong> B.S. Computer Science, Wayne State University, expected August 2026</li>
+            <li><strong>Apple Developer Academy</strong> at Michigan State University, completed May 2026</li>
+            <li><strong>Languages:</strong> Swift, C, TypeScript, Java, Python, GDScript</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <h2>Let's talk</h2>
+    <p>I'm looking for software roles starting in 2026.</p>
+    <div class="links">
+      <a href="https://linkedin.com/in/bassel-taleb">LinkedIn</a>
+      <a href="https://github.com/Bttaleb">GitHub</a>
+    </div>
+  </footer>
+</div>
+
+<script>
+(() => {
+  const c = document.getElementById('spring');
+  const ctx = c.getContext('2d');
+  const out = document.getElementById('readout');
+  const W = c.width, H = c.height;
+  const PPM = 100, g = 9.8, k = 18, damping = 0.9, mass = 1.2, dt = 1 / 60;
+  const anchor = { x: W / 2, y: 40 };
+  const rest = 2.4; // metres
+  const R = 34;
+  const css = getComputedStyle(document.documentElement);
+  const ink = css.getPropertyValue('--ink').trim();
+  const steel = css.getPropertyValue('--steel').trim();
+  const brass = css.getPropertyValue('--brass').trim();
+  const rule = css.getPropertyValue('--rule').trim();
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // y measured in metres below the anchor
+  const eq = rest + mass * g / k;
+  let y = reduce ? eq : rest, v = 0, dragging = false, acc = 0, last = performance.now();
+
+  function step() {
+    const stretch = y - rest;
+    const a = g + (-k * stretch - damping * v) / mass;
+    v += a * dt; y += v * dt;
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    // ceiling
+    ctx.strokeStyle = rule; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(W / 2 - 70, anchor.y); ctx.lineTo(W / 2 + 70, anchor.y); ctx.stroke();
+    for (let i = -70; i < 70; i += 14) { ctx.beginPath(); ctx.moveTo(W / 2 + i, anchor.y); ctx.lineTo(W / 2 + i + 10, anchor.y - 10); ctx.stroke(); }
+    // equilibrium mark
+    const eqPx = anchor.y + eq * PPM;
+    ctx.setLineDash([4, 6]); ctx.beginPath(); ctx.moveTo(W / 2 - 110, eqPx); ctx.lineTo(W / 2 + 110, eqPx); ctx.stroke(); ctx.setLineDash([]);
+    // spring
+    const by = anchor.y + y * PPM - R;
+    const coils = 14, amp = 22, lead = 18;
+    ctx.strokeStyle = steel; ctx.lineWidth = 3; ctx.lineJoin = 'round';
+    ctx.beginPath(); ctx.moveTo(anchor.x, anchor.y); ctx.lineTo(anchor.x, anchor.y + lead);
+    const span = Math.max(by - anchor.y - 2 * lead, 10);
+    for (let i = 1; i <= coils * 2; i++) {
+      ctx.lineTo(anchor.x + (i % 2 ? amp : -amp), anchor.y + lead + span * (i - 0.5) / (coils * 2));
+    }
+    ctx.lineTo(anchor.x, by - lead + lead); ctx.lineTo(anchor.x, by); ctx.stroke();
+    // weight
+    ctx.fillStyle = brass; ctx.beginPath(); ctx.arc(anchor.x, by + R, R, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = ink; ctx.lineWidth = 2; ctx.stroke();
+    const tension = k * (y - rest);
+    out.textContent = `v = ${v.toFixed(2)} m/s · tension = ${tension.toFixed(1)} N`;
+  }
+
+  function loop(now) {
+    acc += Math.min(now - last, 100) / 1000; last = now;
+    while (acc >= dt) { if (!dragging) step(); acc -= dt; }
+    draw(); requestAnimationFrame(loop);
+  }
+
+  function toY(e) {
+    const r = c.getBoundingClientRect();
+    const py = (e.clientY - r.top) * (H / r.height);
+    return Math.min(Math.max((py - anchor.y - R) / PPM, 0.6), (H - anchor.y - 2 * R - 6) / PPM);
+  }
+  c.addEventListener('pointerdown', e => { dragging = true; c.setPointerCapture(e.pointerId); y = toY(e); v = 0; });
+  c.addEventListener('pointermove', e => { if (dragging) { y = toY(e); v = 0; } });
+  const release = () => { dragging = false; };
+  c.addEventListener('pointerup', release); c.addEventListener('pointercancel', release);
+  c.addEventListener('keydown', e => {
+    if (e.key === 'ArrowDown') { y = Math.min(y + 0.15, (H - anchor.y - 2 * R - 6) / PPM); v = 0; e.preventDefault(); }
+    if (e.key === 'ArrowUp') { y = Math.max(y - 0.15, 0.6); v = 0; e.preventDefault(); }
+  });
+
+  requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>
